@@ -1,8 +1,5 @@
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import 'package:timeago/timeago.dart' as timeago;
 import '../helper/news.dart';
@@ -17,7 +14,6 @@ class CatTabBar extends StatefulWidget {
 }
 
 class _CatTabBarState extends State<CatTabBar>
-//with TickerProviderStateMixin
 {
   late TabController _controller;
   bool _loading = true;
@@ -29,7 +25,6 @@ class _CatTabBarState extends State<CatTabBar>
     super.initState();
     getCategoryNews();
     print("initState");
-    //_controller = TabController(vsync: this, length:  category.length);
   }
 
   getCategoryNews() async {
@@ -71,15 +66,10 @@ class _CatTabBarState extends State<CatTabBar>
                     categortIndex = category[index].toLowerCase();
                   });
                   getCategoryNews();
-                  print(categortIndex);
-                  // Navigator.pop(context);
                 },
                 labelColor: Colors.black,
                 unselectedLabelColor: Colors.black87,
                 labelPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 3),
-                // indicator: BoxDecoration(
-                //     borderRadius: BorderRadius.circular(27),
-                //     color: Colors.red),
                 indicatorColor: Colors.red[700],
                 indicatorWeight: 4,
                 isScrollable: true,
@@ -106,96 +96,6 @@ class _CatTabBarState extends State<CatTabBar>
                     SizedBox(
                       height: 10,
                     ),
-                    // CarouselSlider.builder(
-                    //   itemCount: articles.length,
-                    //   itemBuilder: (BuildContext context, int itemIndex,
-                    //           int pageViewIndex) =>
-                    //       Container(
-                    //         padding: const EdgeInsets.only(
-                    //             left: 5.0, right: 5.0, top: 10.0, bottom: 10.0),
-                    //     child: Stack(
-                    //       children: <Widget>[
-                    //         Container(
-                    //             decoration: new BoxDecoration(
-                    //           borderRadius:
-                    //               BorderRadius.all(Radius.circular(8.0)),
-                    //           shape: BoxShape.rectangle,
-                    //           image: new DecorationImage(
-                    //               fit: BoxFit.cover,
-                    //               image: NetworkImage(
-                    //                 articles[itemIndex].urlToImage ?? ''),
-                    //         ))),
-                    //         Container(
-                    //           decoration: BoxDecoration(
-                    //             borderRadius:
-                    //                 BorderRadius.all(Radius.circular(8.0)),
-                    //             gradient: LinearGradient(
-                    //                 begin: Alignment.bottomCenter,
-                    //                 end: Alignment.topCenter,
-                    //                 stops: [
-                    //                   0.1,
-                    //                   0.9
-                    //                 ],
-                    //                 colors: [
-                    //                   Colors.black.withOpacity(0.9),
-                    //                   Colors.white.withOpacity(0.0)
-                    //                 ]),
-                    //           ),
-                    //         ),
-                    //         Positioned(
-                    //             bottom: 30.0,
-                    //             child: Container(
-                    //               padding: EdgeInsets.only(
-                    //                   left: 10.0, right: 10.0),
-                    //               width: 250.0,
-                    //               child: Column(
-                    //                 children: <Widget>[
-                    //                   Text(
-                    //                     articles[itemIndex].title??"",
-                    //                     style: TextStyle(
-                    //                         height: 1.5,
-                    //                         color: Colors.white,
-                    //                         fontWeight: FontWeight.bold,
-                    //                         fontSize: 12.0),
-                    //                   ),
-                    //                 ],
-                    //               ),
-                    //             )),
-                    //         Positioned(
-                    //             bottom: 10.0,
-                    //             left: 10.0,
-                    //             child:
-                    //             Text(
-                    //               articles[itemIndex].publishedAt??"",
-                    //               style: TextStyle(color: Colors.white54, fontSize: 9.0),
-                    //             )),
-                    //         // Positioned(
-                    //         //     bottom: 10.0,
-                    //         //     right: 10.0,
-                    //         //     child: Text(
-                    //         //         articles[itemIndex].author??"",
-                    //         //       style: TextStyle(color: Colors.white54, fontSize: 9.0),
-                    //         //     )),
-                    //       ],
-                    //     ),
-                    //
-                    //     // Image.network(
-                    //     //   articles[itemIndex].urlToImage ?? '',
-                    //     //   fit: BoxFit.fill,
-                    //     //   width: double.infinity,
-                    //     // ),
-                    //
-                    //   ),
-                    //   options: CarouselOptions(
-                    //     //autoPlay: true,
-                    //     height: 200.0,
-                    //     enlargeCenterPage: true,
-                    //     enlargeStrategy: CenterPageEnlargeStrategy.height,
-                    //     viewportFraction: 0.9,
-                    //     aspectRatio: 1.0,
-                    //     initialPage: 0,
-                    //   ),
-                    // ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 8),
                       child: Column(
@@ -208,7 +108,7 @@ class _CatTabBarState extends State<CatTabBar>
                                 shrinkWrap: true,
                                 physics: ClampingScrollPhysics(),
                                 itemBuilder: (context, index) {
-                                  return BlogTileList(
+                                  return NewsList(
                                     imageUrl: articles[index].urlToImage ?? '',
                                     content: articles[index].content ?? '',
                                     title: articles[index].title ?? '',
@@ -230,9 +130,9 @@ class _CatTabBarState extends State<CatTabBar>
   }
 }
 
-class BlogTileList extends StatelessWidget {
+class NewsList extends StatelessWidget {
   final String imageUrl, title, desc, url, date, author, content;
-  BlogTileList(
+  NewsList(
       {required this.imageUrl,
       required this.title,
       required this.desc,
@@ -243,7 +143,6 @@ class BlogTileList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //getCategories();
     return GestureDetector(
       onTap: () {
         Navigator.push(

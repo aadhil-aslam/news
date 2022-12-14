@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'article_view.dart';
 
-class BlogTileList extends StatelessWidget {
+class NewsList extends StatelessWidget {
   final String imageUrl, title, desc, url, date, author, content;
-  BlogTileList(
+  NewsList(
       {required this.imageUrl,
       required this.title,
       required this.desc,

@@ -1,5 +1,3 @@
-import 'package:flutternews/models/source_model.dart';
-
 class ArticleModel {
   String? author;
   String? title;

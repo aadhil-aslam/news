@@ -3,11 +3,11 @@ import '../models/country_model.dart';
 List<CountryModel> getCountries(){
   List<CountryModel> country = <CountryModel>[];
   CountryModel countryModel = new CountryModel();
-
-  countryModel.countryName = "United Arab Emirates";
-  countryModel.id = "ae";
-  country.add(countryModel);
-  countryModel = new CountryModel();
+  //
+  // countryModel.countryName = "United Arab Emirates";
+  // countryModel.id = "ae";
+  // country.add(countryModel);
+  // countryModel = new CountryModel();
 
   countryModel.countryName = "Argentina";
   countryModel.id = "ar";
